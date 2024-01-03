@@ -1,0 +1,1 @@
+WORDS_API_ENDPOINT = 'https://wordsapiv1.p.rapidapi.com'
