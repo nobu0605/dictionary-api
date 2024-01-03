@@ -1,4 +1,5 @@
-class SearchWordController < ApplicationController
+class Api::SearchWordController < ApplicationController
+  before_action :authenticate_api_user!
   require "net/http"
 
   def search_word
