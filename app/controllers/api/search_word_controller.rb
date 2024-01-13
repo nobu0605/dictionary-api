@@ -3,7 +3,7 @@ class Api::SearchWordController < ApplicationController
   require "net/http"
 
   def search_word
-    url = "#{WORDS_API_ENDPOINT}/words/hatchback/typeOf"
+    url = "#{WORDS_API_ENDPOINT}/words/#{params[:word]}/typeOf"
     uri = URI.parse(url)
     headers = { "X-RapidAPI-Key" => Rails.application.credentials.words_api[:api_key] }
     response = Net::HTTP.get(uri,headers)
