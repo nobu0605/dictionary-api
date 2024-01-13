@@ -7751,6 +7751,9 @@ class ActionController::TestCase < ::ActiveSupport::TestCase
   # source://actionpack//lib/action_controller/test_case.rb#561
   def _controller_class?; end
 
+  # source://railties/7.0.8/lib/rails/test_help.rb#43
+  def before_setup; end
+
   class << self
     # source://activesupport/7.0.8/lib/active_support/callbacks.rb#68
     def __callbacks; end
@@ -11603,6 +11606,14 @@ class ActionDispatch::IntegrationTest < ::ActiveSupport::TestCase
   include ::ActionDispatch::Routing::UrlFor
   include ::ActionDispatch::IntegrationTest::UrlOptions
   extend ::ActionDispatch::IntegrationTest::Behavior::ClassMethods
+
+  # source://railties/7.0.8/lib/rails/test_help.rb#50
+  def before_setup; end
+
+  class << self
+    # source://activerecord/7.0.8/lib/active_record/test_fixtures.rb#20
+    def fixture_path; end
+  end
 end
 
 # source://actionpack//lib/action_dispatch/testing/integration.rb#641
