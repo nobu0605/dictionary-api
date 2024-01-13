@@ -4581,6 +4581,8 @@ end
 
 # source://devise//lib/devise/test_helpers.rb#4
 module Devise::TestHelpers
+  include ::Devise::Test::ControllerHelpers
+
   class << self
     # @private
     #
