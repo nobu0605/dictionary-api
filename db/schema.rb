@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_03_094218) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_21_045015) do
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -35,4 +35,27 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_03_094218) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  create_table "vocabulary_books", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name", null: false
+    t.bigint "user_id"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_vocabulary_books_on_user_id"
+  end
+
+  create_table "vocabulary_words", charset: "utf8mb4", force: :cascade do |t|
+    t.string "word", null: false
+    t.bigint "vocabulary_book_id"
+    t.string "definition", null: false
+    t.string "pronunciation", null: false
+    t.string "part_of_speech", null: false
+    t.text "examples"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vocabulary_book_id"], name: "index_vocabulary_words_on_vocabulary_book_id"
+  end
+
+  add_foreign_key "vocabulary_books", "users", on_delete: :cascade
+  add_foreign_key "vocabulary_words", "vocabulary_books", on_delete: :cascade
 end

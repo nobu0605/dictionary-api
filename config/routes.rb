@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     # Defines the root path route ("/")
     # root "articles#index"
 
+    post "/get_user", to: "users#get_user"
+
     get "/search_word", to: "search_word#search_word"
+
+    post "/vocabulary_books/create", to: "vocabulary_books#create"
+    get "/vocabulary_books/list", to: "vocabulary_books#list"
+    delete "/vocabulary_books/delete/:vocabulary_book_id", to: "vocabulary_books#delete"
   end
 end
