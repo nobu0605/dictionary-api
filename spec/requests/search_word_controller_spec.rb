@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "SearchWordControllers", type: :request do
+RSpec.describe "SearchWordsControllers", type: :request do
   include Warden::Test::Helpers
 
   describe "GET /search_word" do
