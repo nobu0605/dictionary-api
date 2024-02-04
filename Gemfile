@@ -54,6 +54,7 @@ group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'dotenv-rails'
 end
 
 group :development do

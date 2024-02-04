@@ -1,6 +1,6 @@
 # typed: true
 
-class Api::SearchWordController < ApplicationController
+class Api::SearchWordsController < ApplicationController
   before_action :authenticate_api_user!
   require "net/http"
   extend T::Sig
