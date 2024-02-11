@@ -5,16 +5,18 @@ class Api::VocabularyBooksController < ApplicationController
   extend T::Sig
 
   def create
-    vocabularyBook = VocabularyBook.create!(vocabulary_book_params)
-    return render status: 200, json: { status: 200, message: "Success", vocabulary_book: vocabularyBook }
+    vocabulary_book = VocabularyBook.create!(vocabulary_book_params)
+    return render status: 200, json: { status: 200, message: "Success", vocabulary_book: vocabulary_book }
   rescue Exception => e
+    logger.error "An error occurred: #{e.message}"
     render status: "500", json: { message: "Internal Server Error" }
   end
 
   def list
-    vocabularyBook = VocabularyBook.where(user_id: params[:user_id])
-    return render status: 200, json: { status: 200, message: "Success", vocabulary_book: vocabularyBook }
+    vocabulary_books = VocabularyBook.where(user_id: params[:user_id])
+    return render status: 200, json: { status: 200, message: "Success", vocabulary_books: vocabulary_books }
   rescue Exception => e
+    logger.error "An error occurred: #{e.message}"
     render status: "500", json: { message: "Internal Server Error" }
   end
 
@@ -22,6 +24,7 @@ class Api::VocabularyBooksController < ApplicationController
     VocabularyBook.destroy(params[:vocabulary_book_id])
     return render status: 200, json: { status: 200, message: "Success" }
   rescue Exception => e
+    logger.error "An error occurred: #{e.message}"
     render status: "500", json: { message: "Internal Server Error" }
   end
 
