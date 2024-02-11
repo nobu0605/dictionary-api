@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_21_045015) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_11_130036) do
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
@@ -53,6 +53,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_21_045015) do
     t.text "examples"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["vocabulary_book_id", "word"], name: "index_vocabulary_words_on_vocabulary_book_id_and_word", unique: true
     t.index ["vocabulary_book_id"], name: "index_vocabulary_words_on_vocabulary_book_id"
   end
 
